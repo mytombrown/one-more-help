@@ -37,3 +37,4 @@ th { color: var(--muted); font-size: 12px; letter-spacing: 1.5px; }
 .ask a { color: #1C1240; font-weight: 900; }
 footer { max-width: 960px; margin: 0 auto; padding: 24px 16px 40px; color: var(--muted); font-size: 14px; }
 @media (max-width: 520px) { .shots img { height: 340px; } header h1 { font-size: 26px; } }
+.new { display: inline-block; font-size: 13px; color: var(--night); background: var(--mint); border-radius: 10px; padding: 4px 10px; margin: 2px 0 8px; }
