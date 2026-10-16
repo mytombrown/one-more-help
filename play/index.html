@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play me in One More</title>
+  <meta name="description" content="A friend invited you to a One More match. Same board, one round each.">
+  <link rel="icon" type="image/png" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+  <style>
+    main { max-width: 520px; }
+    .big { display: block; text-align: center; text-decoration: none; font-weight: 900; font-size: 22px;
+           padding: 16px; border-radius: 20px; margin: 14px 0; color: var(--night); box-shadow: 0 5px 0 var(--lip); }
+    .code { font-size: 34px; font-weight: 900; letter-spacing: 4px; color: var(--sun); }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../assets/icon.png" alt="One More app icon">
+    <div><h1>You're invited</h1><p>Same board. One round each.</p></div>
+  </header>
+  <main>
+    <div class="card">
+      <p class="lead">A friend played a round in One More and wants you to beat it.</p>
+      <a id="open" class="big sun" href="onemore://join">Open One More</a>
+      <p class="muted">Code <span id="code" class="code">——</span></p>
+    </div>
+    <div class="card">
+      <p><strong>Don't have One More?</strong> Get it, sign in to Game Center, then tap this link again.</p>
+      <a class="big mint" href="https://apps.apple.com/app/id6819893632">Get One More</a>
+      <p class="muted">iPhone. Free. No ads.</p>
+    </div>
+    <p class="muted"><a href="../#versus">How Versus works</a></p>
+  </main>
+  <script>
+    // OM-1040: the link carries ?c=<6-digit code>; the button hands it to the app.
+    var c = (new URLSearchParams(location.search).get("c") || "").trim();
+    if (/^[1-9][0-9]{5}$/.test(c)) {
+      document.getElementById("code").textContent = c;
+      document.getElementById("open").href = "onemore://join?c=" + c;
+    } else {
+      document.getElementById("open").style.display = "none";
+      document.getElementById("code").textContent = "missing — ask for a new link";
+    }
+  </script>
+</body>
+</html>
